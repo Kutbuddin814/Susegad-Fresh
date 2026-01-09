@@ -14,8 +14,8 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.clear();
-    setUser(null);
+    localStorage.clear(); // Clears everything including token and user
+    setUser(null);        // Updates UI to reflect logged-out state
   };
 
   return (
