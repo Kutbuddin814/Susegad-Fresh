@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// UPDATE THIS: Use environment variable with a fallback
+// This looks for an environment variable, but falls back to localhost for your own testing
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
 });
