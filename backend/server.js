@@ -5,13 +5,19 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+// UPDATE THIS: Restricted CORS for production
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 
+// Use MONGO_URI from Render environment variables
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
